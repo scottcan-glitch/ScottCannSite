@@ -1,0 +1,88 @@
+1:
+
+—-----------------------------------------------------------------------------------------------------------------------------------------
+Profile:
+
+Robotics engineer skilled in system integration, automation, and mechatronics. Hands-on experience with electrical and mechanical design, simulation, and lab testing. Strong background in MATLAB/Simulink-based modeling & control, CAD/FEA, and prototyping (3D printing, welding, fabrication). Currently pursuing an MSE in Robotics at U-M Dearborn focused on optimal control systems.
+—-----------------------------------------------------------------------------------------------------------------------------------------
+Education:
+
+University of Michigan - Dearborn
+M.S.E. Robotics Engineering - Expected Apr 2026 | GPA 3.8
+Relevant Coursework: Modern Control Theory, Model Predictive Control, Mechatronics, Power Electronics & Motor Drives, Automotive Systems Modeling, Intelligent Systems
+Eastern Michigan University
+B.S. Mechanical Engineering - 2024 | GPA 3.84
+
+Washtenaw Community College
+A.S. General Math and Science - 2021 | GPA 4.00
+Certificate in Welding and Fabrication - 2021 | GPA 4.00
+—-----------------------------------------------------------------------------------------------------------------------------------------
+
+Software/Programming:
+
+MATLAB/Simulink/Simscape - Git/GitHub - Autodesk Inventor/AutoCad -  Excel - Aerotech Automation1 - Siemens NX - C - Python - FEA (Ansys) - Siemens Simcenter/LMS (for NVH)  - PSIM
+
+Work Experience:
+
+Graduate Research Assistant (Digital Manufacturing Lab)
+University of Michigan – Dearborn | Jan 2025 – Present
+
+Developed motion control software in Python, C++, and Aeroscript which:
+Automated print-job operations start to finish from GUI
+Auto-generated data logs and print-configuration JSON files for high traceability
+Provided high-level interface for coordinating motion & print operations
+Source controlled and highly documented
+System integration for Binder Jet 3D printer
+Wired AC/DC power systems for motion and sensor subsystems.
+Interfaced embedded sensors and actuators (laser line scanner, Telsonic resonator, actuator & motor control boards) using UART, USB, and TCP/IP protocols.
+Designed and validated powder delivery system
+
+Graduate Student Instructor
+University of Michigan – Dearborn | Aug 2025 – Dec 2025
+
+Instructed 2 sections of ME260 Mechanical Stress Analysis
+
+Electronics Test Engineer / Associate Engineer / Co-op
+Link Engineering, Dearborn, MI | May 2022 – Sep 2024
+
+Developed a portable E-brake test unit with pneumatic actuation and PLC control, which gave our customer a flexible solution for testing different drive axles in their own facility.
+Built relay-based continuity monitoring device, saved 90% cost over the legacy DAQ-based monitoring system
+Executed electrical and mechanical test programs (EV drivetrain, impact, steering) using hydraulic and electric servo rigs
+Conducted wiring harness validation per USCAR2 using oscilloscopes, meggers, HIPOT testers
+
+Manufacturing CNC/Lathe Operator
+Extreme Machine, Whitmore Lake, MI | Summer 2021
+
+Operated CNC and lathe machines for aluminum components; verified tolerances using CMM and precision gauges.
+—-----------------------------------------------------------------------------------------------------------------------------------------
+Projects:
+
+Traction Control using Non-Linear MPC
+(Aug 2025 - Dec 2025)
+
+Demonstrated a nonlinear model predictive control (NMPC) strategy for vehicle traction and yaw stability control. Proved its ability to regulate tire slip during transient low and split-traction conditions. IE, the vehicle hits an ice patch on the left hand tires. Double-track model including Pacejka tire model implemented using MATLAB and CasADi.
+
+Self Balancing Robot
+(Jan 2025 - April 2025)
+
+Implemented state-space control (LQR + Kalman) for 2-wheel balancing robot; validated stability, velocity & position control under parameter variation and sensor noise using MATLAB and Simulink
+Aerial Leveling of RC Car
+(Aug 2024 - Dec 2024)
+
+Developed a controller to correct airborne vehicle attitude using throttle inputs, leveraging the large relative inertia of RC-vehicle tires. Modeled and simulated in MATLAB/Simulink
+
+5DOF Robot Arm
+(Dec 2023 - April 2024)
+
+Designed and fabricated a 5-DOF robotic arm (0.5 kg payload, 3 ft reach); implemented inverse kinematics and performed structural FEA validation (MATLAB + NX)
+Controlled motion with open-loop stepper motors and microswitch endstops (C)
+
+Coherix Computer Vision
+(Aug 2023 - April 2024)
+
+Analyzed a dispensed bead of structural adhesive using computer vision hardware
+
+FDM 3D Printer
+(August 2022 - July 2023)
+
+Built Voron 2.4 3D printer, created g-code macros for nozzle wiping, bed-leveling, etc

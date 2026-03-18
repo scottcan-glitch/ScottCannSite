@@ -1,0 +1,30 @@
+Wrote motion control software for a Binderjet metal 3D printer in python (and small amount of C). This included motion control for 5 degrees of freedom, depositing powder and rolling it onto a build plate, scanning and processing data from a laser line scanner, and buffering print layer data to the inkjet head.
+C language:
+
+Have written C for arduino and esp32 microcontrollers, and done small amount of work with MATLAB codgen of C functions.
+TCP/IP:
+
+On the binder jet metal 3D printer, we send json strings over TCP/IP to queue print files to the inkjet head for each layer. The laser line scanner uses REST json strings over TCP/IP
+Mechanical Testing:
+
+Did lab mechanical testing while working as a test engineer, used servo hydraulics
+Motion Control:
+
+For Servos, PMSM/BLDC motors, DC motors, stepper motors, linear actuators
+Finite Element Analysis: I have done a small amount of FEA
+Prototyping: I have done a large amount of 3D printing and design for 3D printing
+Model Predictive Control:
+
+Developed a nonlinear model predictive controller for managing tire slip for a vehicle which hits ice patches on the left/right or both sides of vehicle.
+Mechanical Stress:
+
+Good fundamental understanding
+MATLAB: Fluent
+SImulink: and Simscape
+Kalman Filter:
+
+Implemented KF for state estimation of a 2 wheel balancing vehicle in MATLAB/Simulink. Have done a literature review of sensor fusion algorithms such as unscented kalman filter, extended kalman filter and particle filters for vehicle state estimation
+esp32/arduino:
+Have used VScode platformio to program C firmware on esp32 and arduino microcontrollers, by itself or as a state machine controlled by raspberry pi
+git/github:
+Most of my MATLAB and python projects are source controlled
