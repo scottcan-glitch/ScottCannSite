@@ -574,6 +574,332 @@
       margin-bottom: var(--space-md);
       max-width: 65ch;
     }
+    .project-media {
+      margin: 0 0 var(--space-md);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+    .project-media img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+    .project-featured .project-media {
+      max-width: 860px;
+    }
+    .project-media-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      margin: 0 0 var(--space-md);
+    }
+    @media (min-width: 768px) {
+      .project-media-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .project-card--hover-media {
+      position: relative;
+      z-index: 0;
+      --project-hover-min-height: clamp(32rem, 72vh, 42rem);
+      --project-hover-media-height: clamp(20rem, 58vh, 34rem);
+      transition: min-height 0.32s ease, transform 0.24s ease, box-shadow 0.24s ease, z-index 0.24s ease;
+    }
+    .project-card--hover-media:hover {
+      min-height: var(--project-hover-min-height);
+      transform: translateY(-3px) scale(1.02);
+      z-index: 50;
+      box-shadow: 0 20px 60px rgba(0, 150, 255, 0.2), var(--shadow-card-hover);
+    }
+    #proj-self-balancing {
+      --project-hover-min-height: clamp(32rem, 72vh, 42rem);
+    }
+    #proj-sepic-converter {
+      --project-hover-min-height: clamp(38rem, 88vh, 54rem);
+      --project-hover-media-height: clamp(28rem, 74vh, 44rem);
+    }
+    #proj-5dof-arm {
+      --project-hover-min-height: clamp(32rem, 76vh, 44rem);
+      --project-hover-media-height: clamp(28rem, 72vh, 42rem);
+    }
+    #proj-mpc-traction {
+      --project-hover-min-height: clamp(32rem, 72vh, 46rem);
+    }
+    #proj-bond-graph-modeling {
+      --project-hover-min-height: clamp(34rem, 78vh, 48rem);
+      --project-hover-media-height: clamp(27rem, 70vh, 42rem);
+    }
+    #proj-voron {
+      --project-hover-min-height: clamp(36rem, 82vh, 50rem);
+    }
+    .project-card--hover-media .project-media-overlay,
+    #proj-5dof-arm .project-video-overlay {
+      opacity: 0;
+      min-height: 0;
+      max-height: 0;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.92);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: opacity 0.24s ease, min-height 0.28s ease, max-height 0.28s ease, margin 0.24s ease, padding 0.24s ease;
+      margin: 0;
+      padding: 0;
+    }
+    .project-card--hover-media:hover .project-media-overlay,
+    #proj-5dof-arm:hover .project-video-overlay {
+      opacity: 1;
+      min-height: var(--project-hover-media-height);
+      max-height: var(--project-hover-media-height);
+      margin: 0 0 var(--space-md);
+      padding: var(--space-md);
+      pointer-events: auto;
+    }
+    .project-card--hover-media > p {
+      overflow: hidden;
+      transition: opacity 0.22s ease, max-height 0.24s ease, margin 0.24s ease;
+      max-height: 14rem;
+    }
+    .project-card--hover-media:hover > p {
+      opacity: 0;
+      max-height: 0;
+      margin: 0;
+      pointer-events: none;
+    }
+    .project-card--hover-media .project-media-overlay .project-media-grid {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: none;
+      opacity: 1;
+      transform: none;
+      margin: 0;
+      gap: 0;
+    }
+    .project-card--hover-media .project-media-overlay .project-media {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .project-card--hover-media .project-media-overlay .project-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .project-card--hover-media .project-media-grid .project-media {
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    .project-card--hover-media .project-media-grid .project-media + .project-media {
+      margin-top: 0;
+    }
+    .project-card--hover-media .project-media-link,
+    #proj-5dof-arm .project-video-link {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: calc(var(--radius) - 2px);
+      text-decoration: none;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .project-card--hover-media .project-media-link:hover,
+    .project-card--hover-media .project-media-link:focus-visible,
+    #proj-5dof-arm .project-video-link:hover,
+    #proj-5dof-arm .project-video-link:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 0 0 1px rgba(0, 150, 255, 0.45), 0 0 24px rgba(0, 150, 255, 0.18);
+      outline: none;
+    }
+    .project-card--hover-media .project-media img {
+      aspect-ratio: auto;
+      object-fit: contain;
+    }
+    .project-card--hover-media .project-media-overlay.project-media-overlay--with-links {
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: var(--space-sm);
+    }
+    .project-card--hover-media .project-media-overlay.project-media-overlay--with-links .project-overlay-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin: 0;
+      flex-shrink: 0;
+    }
+    .project-card--hover-media .project-media-overlay.project-media-overlay--with-links .project-overlay-link {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.375rem 0.625rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      text-decoration: none;
+      transition: border-color 0.2s ease, color 0.2s ease;
+      pointer-events: auto;
+    }
+    .project-card--hover-media .project-media-overlay.project-media-overlay--with-links .project-overlay-link:hover,
+    .project-card--hover-media .project-media-overlay.project-media-overlay--with-links .project-overlay-link:focus-visible {
+      color: var(--accent);
+      border-color: var(--accent);
+      outline: none;
+    }
+    .project-card--hover-media .project-media-overlay.project-media-overlay--with-links .project-media-grid {
+      flex: 1;
+      min-height: 0;
+    }
+    .project-media-grid--voron {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "desk scott"
+        "bottom bottom";
+      gap: var(--space-sm);
+      align-content: center;
+    }
+    .project-media-grid--voron .project-media {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: calc(var(--radius) - 2px);
+      overflow: hidden;
+      background: transparent;
+      box-shadow: none;
+      margin: 0;
+    }
+    .project-media-grid--voron .project-media:nth-child(1) { grid-area: desk; }
+    .project-media-grid--voron .project-media:nth-child(2) { grid-area: scott; }
+    .project-media-grid--voron .project-media:nth-child(3) { grid-area: bottom; }
+    .project-media-grid--voron .project-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      aspect-ratio: auto;
+      display: block;
+    }
+    .project-card--hover-media h4 a {
+      color: var(--accent-soft);
+      text-decoration: none;
+      border: 1px solid rgba(0, 150, 255, 0.3);
+      background: linear-gradient(180deg, rgba(0, 150, 255, 0.12), rgba(0, 150, 255, 0.04));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.2rem 0.45rem;
+      border-radius: 999px;
+    }
+    .project-card--hover-media h4 a:hover,
+    .project-card--hover-media h4 a:focus-visible {
+      color: var(--accent);
+      border-color: rgba(0, 150, 255, 0.75);
+      background: linear-gradient(180deg, rgba(0, 150, 255, 0.2), rgba(0, 150, 255, 0.08));
+      box-shadow: 0 0 0 1px rgba(0, 150, 255, 0.18), 0 0 24px rgba(0, 150, 255, 0.12);
+      transform: translateY(-1px);
+      outline: none;
+    }
+    .project-link-arrow {
+      font-family: var(--font-mono);
+      font-size: 0.875em;
+      line-height: 1;
+      opacity: 0.85;
+    }
+    .project-card--hover-media h4 .project-link-arrow {
+      width: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateX(-0.2rem);
+      transition: width 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+    }
+    .project-card--hover-media:hover h4 .project-link-arrow,
+    .project-card--hover-media:focus-within h4 .project-link-arrow {
+      width: 0.8em;
+      opacity: 0.85;
+      transform: translateX(0);
+    }
+    @media (hover: none) {
+      .project-card--hover-media .project-media-overlay,
+      #proj-5dof-arm .project-video-overlay {
+        opacity: 1;
+        min-height: 18rem;
+        max-height: none;
+        padding: var(--space-md);
+        margin: 0 0 var(--space-sm);
+        pointer-events: auto;
+      }
+      .project-card--hover-media .project-media-overlay .project-media-grid {
+        max-height: none;
+        margin: 0 0 var(--space-sm);
+        pointer-events: auto;
+      }
+      .project-card--hover-media > p {
+        opacity: 1;
+        max-height: none;
+        margin: 0 0 var(--space-md);
+      }
+    }
+    .project-media-grid--split {
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+    .project-media-grid--split > .project-media {
+      height: 100%;
+    }
+    .project-media-grid--split > .project-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .project-media-stack {
+      display: flex;
+      flex-direction: column;
+    }
+    .project-media-stack .project-media {
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      flex: 1;
+    }
+    .project-media-stack .project-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    #proj-5dof-arm .project-video-overlay video {
+      width: auto;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: calc(var(--radius) - 2px);
+      transform: rotate(-90deg) scale(0.72);
+      transform-origin: center;
+    }
     .ascii-diagram {
       font-family: var(--font-mono);
       font-size: 0.75rem;
@@ -1052,7 +1378,7 @@
       .hero-grid { grid-template-columns: 1fr 1fr; }
       /* .headshot-container { display: flex; } — uncomment when assets/headshot.jpg is added */
       .timeline-item { grid-template-columns: 140px 1fr; }
-      .project-grid { grid-template-columns: 1fr 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr 1fr 1fr; }
     }
 
@@ -1523,7 +1849,7 @@
               <a href="assets/scott-cann-resume.pdf" class="btn btn-primary" id="resume-btn" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
             <div class="status-bar">
-              <span class="status-item"><span class="status-dot" aria-hidden="true"></span> Open to full-time robotics/controls roles</span>
+              <span class="status-item"><span class="status-dot" aria-hidden="true"></span> Open to full-time engineering roles</span>
               <span class="status-item">🎓 MSE Apr 2026</span>
             </div>
           </div>
@@ -1548,9 +1874,9 @@
           <div class="line" aria-hidden="true"></div>
         </div>
         <div class="about-content">
-          <p>I'm a robotics engineer specializing in control systems, automation, and mechatronics. My journey started on the manufacturing floor operating CNC and lathe machines, where I developed a deep appreciation for precision and hands-on problem solving. This foundation led me to test engineering at Link Engineering, where I designed pneumatic test systems, built custom electronics, and validated EV drivetrains on hydraulic servo rigs.</p>
-          <p>Currently pursuing my MS in Robotics Engineering at UM-Dearborn, I focus on optimal control theory and its practical applications. My graduate research in the Digital Manufacturing Lab involves developing motion control software for a metal binder jet 3D printer—controlling 5 degrees of freedom, interfacing sensors via TCP/IP, and coordinating complex print operations. I've also explored nonlinear model predictive control for vehicle traction stability, demonstrating how advanced control strategies can handle real-world challenges like split-traction conditions.</p>
-          <p>I'm drawn to projects where software meets hardware—whether it's implementing Kalman filters for self-balancing robots, developing aerial attitude control for RC vehicles, or fabricating a 5-DOF robotic arm with inverse kinematics. With a strong foundation in MATLAB/Simulink, Python, and C, combined with hands-on experience in welding, fabrication, and mechanical testing, I bridge the gap between theory and implementation. I'm passionate about control systems that make machines smarter, safer, and more capable.</p>
+          <p>I am a young engineer specializing in control systems, automation, and mechatronics. My journey started with building and modifying FDM 3D printers, pick and place robots, and learning to program while studying mechanical engineering. This foundation led me to a test engineering role at Link Engineering, where I worked with my good friend Mark to complete fatigue and ultimate strength tests on automotive components in a servo-hydraulic lab. We were always designing and building custom fixtures and electronics, and working directly with customers to expand our testing capabilities.</p>
+          <p>During my MS in Robotics Engineering at UM-Dearborn I focused on optimal control theory, system integration and automation. Heavy MATLAB/Simulink workflows for modeling and controlling mechatronic systems, typically automotive. In my work at the Digital Manufacturing Lab at University of Michigan - Dearborn, I spearheaded system integration (sensors, actuators, and power systems) for a metal binder jet 3D printer, and developed a metal powder delivery system. Once the mechanical design and system integration phase was complete, I developed motion control software which automates print operations start to finish - from slicing parts and loading 2D image data to the inkjet, to inline data acquisition and logging.</p>
+          <p>I like using hardware and software knowledge to solve complex problems and improve systems. With a strong foundation in MATLAB/Simulink, Python, and C, combined with hands-on experience in welding, fabrication, and mechanical testing, I bridge the gap between theory and implementation. In May 2026 I will graduate from UM-Dearborn, and hope to find a creative team to work with! See some cool projects below.</p>
         </div>
       </div>
     </section>
@@ -1935,20 +2261,19 @@
         <!-- Personal lane -->
         <div class="project-lane">
           <h3 class="lane-label">Graduate Research</h3>
-          <div class="project-featured stagger-item" id="proj-mpc-traction">
-            <h4>Traction Control using Nonlinear MPC</h4>
-            <div class="project-meta">MATLAB / CasADi · Model Predictive Control Final Project</div>
+          <div class="project-featured project-card--hover-media stagger-item" id="proj-mpc-traction">
+            <h4><a href="assets/projects/nmpc-traction-controller-report.pdf" target="_blank" rel="noopener noreferrer">Traction Control using Nonlinear MPC <span class="project-link-arrow" aria-hidden="true">↗</span></a></h4>
+            <div class="project-meta">MATLAB / CasADi · Model Predictive Control</div>
             <p>Demonstrated a nonlinear model predictive control (NMPC) strategy for vehicle traction and yaw stability control. Proved its ability to regulate tire slip during transient low and split-traction conditions—e.g., when the vehicle hits an ice patch on the left-hand tires.</p>
-            <div class="ascii-diagram" aria-label="Vehicle control architecture" tabindex="0">
- ┌──────────────┐    ┌──────────────────┐    ┌───────────────────┐
- │  Double-     │───▶│  Pacejka Tire    │───▶│  NMPC Controller  │
- │  Track Model │    │  Model (Magic    │    │  (Slip & Yaw      │
- │  (Vehicle)   │    │   Formula)       │    │   Regulation)     │
- └──────────────┘    └──────────────────┘    └───────────────────┘
-                            ▲                          │
-                            │                          │
-                            └──────────────────────────┘
-                              Torque Commands</div>
+            <div class="project-media-overlay">
+              <div class="project-media-grid">
+                <figure class="project-media">
+                  <a class="project-media-link" href="assets/projects/nmpc-traction-controller-report.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the Traction Control using Nonlinear MPC report">
+                    <img src="assets/projects/nmpc-model-img.jpg" alt="NMPC traction control vehicle model and wheel-frame dynamics diagram" width="768" height="813" loading="lazy" decoding="async">
+                  </a>
+                </figure>
+              </div>
+            </div>
             <div class="tags">
               <span class="tag">MATLAB</span>
               <span class="tag">CasADi</span>
@@ -1959,10 +2284,19 @@
             </div>
           </div>
           <div class="project-grid">
-            <div class="project-card stagger-item" id="proj-self-balancing">
-              <h4>Self-Balancing Robot</h4>
+            <div class="project-card project-card--hover-media stagger-item" id="proj-self-balancing">
+              <h4><a href="assets/projects/self-balancing-robot-report.pdf" target="_blank" rel="noopener noreferrer">Self-Balancing Robot <span class="project-link-arrow" aria-hidden="true">↗</span></a></h4>
               <div class="project-meta">MATLAB / Simulink · Modern Control Theory</div>
               <p>Implemented state-space control (LQR + Kalman filter) for a 2-wheel balancing robot. Validated stability, velocity, and position control under parameter variation and sensor noise using MATLAB and Simulink.</p>
+              <div class="project-media-overlay">
+                <div class="project-media-grid">
+                  <figure class="project-media">
+                    <a class="project-media-link" href="assets/projects/self-balancing-robot-report.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the Self-Balancing Robot report">
+                      <img src="assets/projects/balancing-robot-combo.jpg" alt="Self-balancing robot free body diagrams, CAD model, and Simulink controller" width="1824" height="1054" loading="lazy" decoding="async">
+                    </a>
+                  </figure>
+                </div>
+              </div>
               <div class="tags">
                 <span class="tag">MATLAB</span>
                 <span class="tag">Simulink</span>
@@ -1982,6 +2316,51 @@
                 <span class="tag">Vehicle Dynamics</span>
               </div>
             </div>
+            <div class="project-card project-card--hover-media stagger-item" id="proj-bond-graph-modeling">
+              <h4><a href="assets/projects/bond-graph-modeling-report.pdf" target="_blank" rel="noopener noreferrer">Bond Graph Modeling <span class="project-link-arrow" aria-hidden="true">↗</span></a></h4>
+              <div class="project-meta">Automotive Systems Modeling</div>
+              <p>Bond graphs model dynamic systems by assigning causal relationships between different elements. They build the underlying differential equations and show how energy flows through a single or multiple energy-domain system (mechanical, electrical, thermal, magnetic, hydraulic).</p>
+              <div class="project-media-overlay project-media-overlay--with-links">
+                <div class="project-overlay-links" aria-label="Bond graph related reports">
+                  <a class="project-overlay-link" href="assets/projects/bond-graph-modeling-report.pdf" target="_blank" rel="noopener noreferrer">Pendulum Clock <span class="project-link-arrow" aria-hidden="true">↗</span></a>
+                  <a class="project-overlay-link" href="assets/projects/bond-graph-modeling-report-2.pdf" target="_blank" rel="noopener noreferrer">Barrier Collisions <span class="project-link-arrow" aria-hidden="true">↗</span></a>
+                </div>
+                <div class="project-media-grid">
+                  <figure class="project-media">
+                    <a class="project-media-link" href="assets/projects/bond-graph-modeling-report.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the Bond Graph Modeling pendulum clock report">
+                      <img src="assets/projects/bond-graph-combo.jpg" alt="Bond graph modeling diagrams and examples" width="1200" height="900" loading="lazy" decoding="async">
+                    </a>
+                  </figure>
+                </div>
+              </div>
+              <div class="tags">
+                <span class="tag">Bond Graphs</span>
+                <span class="tag">Dynamic Systems</span>
+                <span class="tag">Modeling</span>
+                <span class="tag">Energy Domains</span>
+              </div>
+            </div>
+            <div class="project-card project-card--hover-media stagger-item" id="proj-sepic-converter">
+              <h4><a href="assets/projects/sepic-converter-report.pdf" target="_blank" rel="noopener noreferrer">SEPIC Converter <span class="project-link-arrow" aria-hidden="true">↗</span></a></h4>
+              <div class="project-meta">MATLAB / Simulink · Power Electronics</div>
+              <p>Designed and simulated a SEPIC converter for regulating DC output over wide input range. Developed LTI state-space model for controller design and tested robustness in Simulink/Simscape.</p>
+              <div class="project-media-overlay">
+                <div class="project-media-grid">
+                  <figure class="project-media">
+                    <a class="project-media-link" href="assets/projects/sepic-converter-report.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the SEPIC Converter report">
+                      <img src="assets/projects/sepic-combo.jpg" alt="SEPIC converter Simulink model and control design" width="1339" height="1573" loading="lazy" decoding="async">
+                    </a>
+                  </figure>
+                </div>
+              </div>
+              <div class="tags">
+                <span class="tag">Power Electronics</span>
+                <span class="tag">SEPIC</span>
+                <span class="tag">MATLAB</span>
+                <span class="tag">Simulink</span>
+                <span class="tag">Control Design</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1989,10 +2368,17 @@
         <div class="project-lane">
           <h3 class="lane-label">Engineering Projects</h3>
           <div class="project-grid">
-            <div class="project-card stagger-item" id="proj-5dof-arm">
-              <h4>5DOF Robot Arm</h4>
+            <div class="project-card project-card--hover-media stagger-item" id="proj-5dof-arm">
+              <h4><a href="assets/projects/5dof-robot-arm-report.pdf" target="_blank" rel="noopener noreferrer">5DOF Robot Arm <span class="project-link-arrow" aria-hidden="true">↗</span></a></h4>
               <div class="project-meta">Mechanical Engineering · Dec 2023 — Apr 2024</div>
               <p>Designed and fabricated a 5-DOF robotic arm with 0.5 kg payload and 3 ft reach. Implemented inverse kinematics and performed structural FEA validation using MATLAB and Siemens NX. Controlled motion with open-loop stepper motors and microswitch endstops using C.</p>
+              <div class="project-video-overlay">
+                <a class="project-video-link" href="assets/projects/5dof-robot-arm-report.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the 5DOF Robot Arm report">
+                  <video autoplay muted loop playsinline>
+                    <source src="assets/projects/Snapchat-1005023295.mp4" type="video/mp4">
+                  </video>
+                </a>
+              </div>
               <div class="tags">
                 <span class="tag">Robotics</span>
                 <span class="tag">Inverse Kinematics</span>
@@ -2012,10 +2398,23 @@
                 <span class="tag">Automation</span>
               </div>
             </div>
-            <div class="project-card stagger-item" id="proj-voron">
+            <div class="project-card project-card--hover-media stagger-item" id="proj-voron">
               <h4>FDM 3D Printer (Voron 2.4)</h4>
               <div class="project-meta">Personal Project · Aug 2022 — Jul 2023</div>
-              <p>Built a Voron 2.4 3D printer from scratch. Created custom G-code macros for nozzle wiping, bed-leveling, and automated print sequences. Gained hands-on experience with motion systems, stepper motor control, and firmware configuration.</p>
+              <p>Built a Voron 2.4 3D printer and created custom G-code macros for nozzle wiping and other operations. One of my first introductions to motion systems and controls!</p>
+              <div class="project-media-overlay">
+                <div class="project-media-grid project-media-grid--voron">
+                  <figure class="project-media">
+                    <img src="assets/projects/voron-desk.jpg" alt="Voron 2.4 3D printer on workbench" width="1536" height="2048" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="project-media">
+                    <img src="assets/projects/voron-scott.jpg" alt="Scott standing with completed Voron 2.4 printer" width="1536" height="2048" loading="lazy" decoding="async">
+                  </figure>
+                  <figure class="project-media">
+                    <img src="assets/projects/voron-bottom.jpg" alt="Close-up bottom view of Voron 2.4 build details" width="1536" height="2048" loading="lazy" decoding="async">
+                  </figure>
+                </div>
+              </div>
               <div class="tags">
                 <span class="tag">3D Printing</span>
                 <span class="tag">G-code</span>
@@ -2040,19 +2439,19 @@
           <div class="timeline-item stagger-item">
             <div class="timeline-content">
               <h3>Distance Running</h3>
-              <p>Long-distance runner who finds clarity and mental endurance in covering miles. Regular training builds the discipline and persistence that carries over into tackling complex engineering problems.</p>
+              <p>During the warmer months, I enjoy long-distance runs on sidewalks or trails. I ran my first half-marathon in 2026, and hope to compete in a marathon soon.</p>
             </div>
           </div>
           <div class="timeline-item stagger-item">
             <div class="timeline-content">
               <h3>Wrestling Background</h3>
-              <p>Competitive wrestling experience developed resilience, strategic thinking, and the ability to perform under pressure—skills that translate directly to engineering challenges and tight project deadlines.</p>
+              <p>After wrestling in middle school and high school, I assistant coached for 2 years at Whitmore Lake High School where my little brother still wrestled.</p>
             </div>
           </div>
           <div class="timeline-item stagger-item">
             <div class="timeline-content">
               <h3>Ultimate Frisbee & Pickleball</h3>
-              <p>Active in ultimate frisbee and pickleball, enjoying team dynamics, quick decision-making, and the balance between competition and camaraderie. These sports keep me physically active and mentally sharp.</p>
+              <p>Playing these an other niche sports during the summer is a blast.</p>
             </div>
           </div>
         </div>
