@@ -45,4 +45,4 @@ Content marked with `data-edition="fall"` is hidden on the live site but visible
 
 ## Deployment
 
-Pushing to `main` triggers automatic deployment to GitHub Pages at https://wrbell.github.io/.
+Pushing to `main` triggers automatic deployment to GitHub Pages at https://scottcan-glitch.github.io/ScottCannSite/.

@@ -1,6 +1,6 @@
-# scottcan-glitch.github.io
+# ScottCannSite
 
-Personal portfolio site for Scott Cann — [scottcan-glitch.github.io](https://scottcan-glitch.github.io/)
+Personal portfolio site for Scott Cann — [scottcan-glitch.github.io/ScottCannSite](https://scottcan-glitch.github.io/ScottCannSite/)
 
 ## Current Features
 

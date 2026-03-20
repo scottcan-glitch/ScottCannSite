@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://wrbell.github.io/sitemap.xml
+Sitemap: https://scottcan-glitch.github.io/ScottCannSite/sitemap.xml
