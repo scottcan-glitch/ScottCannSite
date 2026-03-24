@@ -474,6 +474,7 @@
       position: relative;
       width: 100%;
       max-width: 620px;
+      height: 500px;
       margin-left: 0;
       overflow: visible;
     }
@@ -507,6 +508,11 @@
       border-radius: 16px;
       border: 1px solid var(--border);
       box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+    }
+    .showcase-card video.showcase-robot-video {
+      transform: rotate(-90deg) translate(-100%, 0);
+      transform-origin: top left;
+      object-position: left top;
     }
     .showcase-card img[hidden],
     .showcase-card video[hidden] {
@@ -580,6 +586,10 @@
       transform: scale(1.02);
       filter: brightness(0.9);
     }
+    .showcase-card:hover video.showcase-robot-video,
+    .showcase-card:focus-visible video.showcase-robot-video {
+      transform: rotate(-90deg) translate(-100%, 0) scale(1.02);
+    }
     .showcase-card:hover .showcase-arrow,
     .showcase-card:focus-visible .showcase-arrow {
       transform: translateX(0);
@@ -620,6 +630,7 @@
     @media (max-width: 767px) {
       .showcase-stage {
         max-width: 440px;
+        height: 360px;
       }
       .showcase-card img,
       .showcase-card video {
@@ -2066,7 +2077,7 @@
                 <a class="showcase-card" id="showcaseCard" href="#proj-5dof-arm">
                   <span class="showcase-media-frame" id="showcaseMediaFrame">
                     <img id="showcaseImage" src="assets/projects/robot-combo1.jpg" alt="5DOF robot arm project overview" hidden>
-                    <video id="showcaseVideo" autoplay muted loop playsinline>
+                    <video id="showcaseVideo" class="showcase-robot-video" autoplay muted loop playsinline>
                       <source id="showcaseVideoSource" src="assets/projects/Snapchat-1005023295.mp4" type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
@@ -2086,6 +2097,7 @@
                   <div class="showcase-item" data-type="image" data-href="#proj-sepic-converter" data-src="assets/projects/sepic-combo.jpg" data-alt="SEPIC converter Simulink model and control design" data-title="SEPIC Converter" data-desc="Power electronics modeling and controller design."></div>
                   <div class="showcase-item" data-type="image" data-href="#proj-voron" data-src="assets/projects/voron-scott.jpg" data-alt="Scott with completed Voron 2.4 printer" data-title="FDM 3D Printer (Voron 2.4)" data-desc="Printer build, tuning, and custom macros."></div>
                   <div class="showcase-item" data-type="image" data-href="#proj-esp32-firmware" data-src="assets/esp32.jpg" data-alt="ESP32 speed controller and sensor fusion firmware" data-title="Speed Controller &amp; Sensor Fusion Firmware" data-desc="ESP32 firmware with PI control and IMU fusion."></div>
+                  <div class="showcase-item" data-type="image" data-href="#exp-digital-mfg-lab" data-src="assets/oldgui.jpg" data-alt="Custom GUI for print control in the Digital Manufacturing Lab" data-title="Graduate Research Assistant" data-desc="Custom GUI for print control"></div>
                   <div class="showcase-item" data-type="image" data-href="#proj-self-balancing" data-src="assets/projects/balancing-robot-combo.jpg" data-alt="Self-balancing robot free body diagrams, CAD model, and Simulink controller" data-title="Self-Balancing Robot" data-desc="LQR and Kalman filter control design."></div>
                 </div>
               </div>
