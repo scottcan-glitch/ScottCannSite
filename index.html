@@ -537,8 +537,8 @@
       align-items: flex-end;
       justify-content: space-between;
       gap: var(--space-sm);
-      opacity: 0;
-      transform: translateY(10px);
+      opacity: 1;
+      transform: translateY(0);
       transition: opacity 0.45s ease, transform 0.45s ease;
       z-index: 1;
     }
@@ -558,6 +558,11 @@
       font-size: 0.78rem;
       line-height: 1.35;
       color: var(--muted);
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease;
     }
     .showcase-arrow {
       color: var(--accent);
@@ -565,7 +570,46 @@
       font-size: 1rem;
       flex-shrink: 0;
       transform: translateX(-0.15rem);
-      transition: transform 0.3s ease;
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .showcase-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: auto;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .showcase-nav-btn {
+      pointer-events: auto;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1;
+      opacity: 0.7;
+      padding: 0.1rem 0.2rem;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+    .showcase-nav-btn.showcase-prev {
+      transform: translateX(calc(-100% - 8px));
+    }
+    .showcase-nav-btn.showcase-next {
+      transform: translateX(calc(100% + 8px));
+    }
+    .showcase-nav-btn:hover,
+    .showcase-nav-btn:focus-visible {
+      opacity: 1;
+      color: var(--accent);
     }
     .showcase-card:hover::after,
     .showcase-card:focus-visible::after {
@@ -575,6 +619,13 @@
     .showcase-card:focus-visible .showcase-overlay {
       opacity: 1;
       transform: translateY(0);
+    }
+    .showcase-card:hover .showcase-desc,
+    .showcase-card:focus-visible .showcase-desc,
+    .showcase-card.mobile-overlay-active .showcase-desc {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 4rem;
     }
     .showcase-card:hover img,
     .showcase-card:hover video,
@@ -591,7 +642,9 @@
       transform: rotate(-90deg) translate(-100%, 0) scale(1.02);
     }
     .showcase-card:hover .showcase-arrow,
-    .showcase-card:focus-visible .showcase-arrow {
+    .showcase-card:focus-visible .showcase-arrow,
+    .showcase-card.mobile-overlay-active .showcase-arrow {
+      opacity: 1;
       transform: translateX(0);
     }
     .showcase-card.mobile-overlay-active::after {
@@ -600,12 +653,6 @@
     .showcase-card.mobile-overlay-active .showcase-overlay {
       opacity: 1;
       transform: translateY(0);
-    }
-    .showcase-card.mobile-overlay-active .showcase-desc,
-    .showcase-card.mobile-overlay-active .showcase-arrow {
-      opacity: 1;
-      transform: translateY(0);
-      max-height: 4rem;
     }
     .showcase-items {
       display: none;
@@ -625,6 +672,9 @@
         max-height: 0;
         overflow: hidden;
         transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease;
+      }
+      .showcase-nav-btn {
+        opacity: 0.9;
       }
     }
     @media (max-width: 767px) {
@@ -2058,7 +2108,7 @@
         <div class="hero-grid">
           <div class="hero-content">
             <h1 class="hero-name">Scott <span class="accent">Cann</span></h1>
-            <p class="hero-tagline">robotics engineer · controls · mechatronics<span class="cursor" aria-hidden="true">|</span></p>
+            <p class="hero-tagline">mechanical engineer · controls · mechatronics<span class="cursor" aria-hidden="true">|</span></p>
             <div class="hero-links">
               <a href="https://github.com/scottcan-glitch" class="btn btn-icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -2070,7 +2120,7 @@
             </div>
             <div class="status-bar">
               <span class="status-item"><span class="status-dot" aria-hidden="true"></span> Open to full-time engineering roles</span>
-              <span class="status-item">🎓 MSE Apr 2026</span>
+              <span class="status-item">🎓 MSE Apr 2026 · BSME 2024</span>
             </div>
             <div class="hero-showcase" aria-label="Featured project gallery">
               <div class="showcase-stage" data-showcase-rotator>
@@ -2090,6 +2140,10 @@
                     <span class="showcase-arrow" aria-hidden="true">↗</span>
                   </span>
                 </a>
+                <div class="showcase-nav" aria-label="Showcase navigation">
+                  <button type="button" class="showcase-nav-btn showcase-prev" id="showcasePrev" aria-label="Previous image">‹</button>
+                  <button type="button" class="showcase-nav-btn showcase-next" id="showcaseNext" aria-label="Next image">›</button>
+                </div>
                 <div class="showcase-items" hidden>
                   <div class="showcase-item" data-type="video" data-href="#proj-5dof-arm" data-src="assets/projects/Snapchat-1005023295.mp4" data-title="5DOF Stepper Robot Arm" data-desc="Open-loop stepper control, fabrication, and inverse kinematics."></div>
                   <div class="showcase-item" data-type="image" data-href="#proj-5dof-arm" data-src="assets/projects/robot-combo1.jpg" data-alt="5DOF robot arm project overview" data-title="5DOF Robot Arm" data-desc="Stepper-driven arm design, fabrication, and kinematics."></div>
@@ -2115,8 +2169,8 @@
           <div class="line" aria-hidden="true"></div>
         </div>
         <div class="about-content">
-          <p>I am a young engineer specializing in control systems, automation, and mechatronics. My journey started with building and modifying FDM 3D printers, pick and place robots, and learning to program while studying mechanical engineering. This foundation led me to a test engineering role at Link Engineering, where I worked with my good friend Mark to complete fatigue and ultimate strength tests on automotive components in a servo-hydraulic lab. We were always designing and building custom fixtures and electronics, and working directly with customers to expand our testing capabilities.</p>
-          <p>During my MS in Robotics Engineering at UM-Dearborn I focused on optimal control theory, system integration and automation. Heavy MATLAB/Simulink workflows for modeling and controlling mechatronic systems, typically automotive. In my work at the Digital Manufacturing Lab at University of Michigan - Dearborn, I spearheaded system integration (sensors, actuators, and power systems) for a metal binder jet 3D printer, and developed a metal powder delivery system. Once the mechanical design and system integration phase was complete, I developed motion control software which automates print operations start to finish - from slicing parts and loading 2D image data to the inkjet, to inline data acquisition and logging.</p>
+          <p>I am a recent graduate specializing in control systems, automation, and mechatronics. My journey started with building and modifying FDM 3D printers, pick and place robots, and learning to program while studying mechanical engineering. This foundation led me to a test engineering role at Link Engineering, where I conducted fatigue and ultimate strength tests on automotive components in a servo-hydraulic lab. Our group designed and built custom fixtures and electronics, and worked directly with customers to expand testing capabilities.</p>
+          <p>During my MS in Robotics Engineering at UM-Dearborn I focused on optimal control theory, system integration and automation. Heavy MATLAB/Simulink workflows for modeling and controlling mechatronic systems, typically automotive. In my work at the Digital Manufacturing Lab at University of Michigan - Dearborn, I spearheaded system integration for a metal binder jet 3D printer (sensors, actuators, and power systems), and developed a metal powder delivery system from the ground up. Next I developed end-to-end motion control software to automate print operations start to finish - from slicing parts and loading 2D image data to the inkjet, to inline data acquisition and logging.</p>
           <p>I like using hardware and software knowledge to solve complex problems and improve systems. With a strong foundation in MATLAB/Simulink, Python, and C, combined with hands-on experience in welding, fabrication, and mechanical testing, I bridge the gap between theory and implementation. In May 2026 I will graduate from UM-Dearborn, and hope to find a creative team to work with! See some cool projects below.</p>
         </div>
       </div>
@@ -2228,7 +2282,7 @@
           <h3 class="lane-label">Graduate Research</h3>
           <div class="project-featured project-card--hover-media stagger-item" id="proj-mpc-traction">
             <h4><a href="assets/projects/nmpc-traction-controller-report.pdf" target="_blank" rel="noopener noreferrer">Traction Control using Nonlinear MPC <span class="project-link-arrow" aria-hidden="true">↗</span></a></h4>
-            <div class="project-meta">MATLAB / CasADi · Model Predictive Control</div>
+            <div class="project-meta">MATLAB + CasADi · Model Predictive Control</div>
             <p>Demonstrated a nonlinear model predictive control (NMPC) strategy for vehicle traction and yaw stability control. Proved its ability to regulate tire slip during transient low and split-traction conditions—e.g., when the vehicle hits an ice patch on the left-hand tires.</p>
             <div class="project-media-overlay">
               <div class="project-media-grid">
@@ -3040,7 +3094,11 @@
       var videoSource = document.getElementById('showcaseVideoSource');
       var title = document.getElementById('showcaseTitle');
       var desc = document.getElementById('showcaseDesc');
-      if (!card || !mediaFrame || !image || !video || !videoSource || !title || !desc || items.length <= 1) return;
+      var prevBtn = document.getElementById('showcasePrev');
+      var nextBtn = document.getElementById('showcaseNext');
+      var nav = stage.querySelector('.showcase-nav');
+      var overlay = stage.querySelector('.showcase-overlay');
+      if (!card || !mediaFrame || !image || !video || !videoSource || !title || !desc || !prevBtn || !nextBtn || !nav || !overlay || items.length <= 1) return;
 
       var currentIndex = 0;
       var timerId = null;
@@ -3052,6 +3110,35 @@
 
       function closeMobileOverlay() {
         card.classList.remove('mobile-overlay-active');
+      }
+
+      function updateNavPosition() {
+        var activeMedia = video.hidden ? image : video;
+        if (!activeMedia || activeMedia.hidden) return;
+        var stageRect = stage.getBoundingClientRect();
+        var cardRect = card.getBoundingClientRect();
+        var mediaRect = activeMedia.getBoundingClientRect();
+        if (!stageRect.width || !mediaRect.width || !mediaRect.height) return;
+
+        var top = mediaRect.top - stageRect.top + (mediaRect.height / 2);
+        var left = mediaRect.left - stageRect.left;
+        nav.style.top = top + 'px';
+        nav.style.left = left + 'px';
+        nav.style.width = mediaRect.width + 'px';
+
+        var overlayInset = 16;
+        var overlayLeft = mediaRect.left - cardRect.left + overlayInset;
+        var overlayWidth = Math.max(0, mediaRect.width - (overlayInset * 2));
+        overlay.style.left = overlayLeft + 'px';
+        overlay.style.right = 'auto';
+        overlay.style.width = overlayWidth + 'px';
+        overlay.style.bottom = 'auto';
+
+        var mediaTopInCard = mediaRect.top - cardRect.top;
+        var overlayHeight = overlay.offsetHeight || 0;
+        var overlayTop = mediaTopInCard + mediaRect.height - overlayHeight - overlayInset;
+        var minOverlayTop = mediaTopInCard + overlayInset;
+        overlay.style.top = Math.max(overlayTop, minOverlayTop) + 'px';
       }
 
       function showCard(index) {
@@ -3080,12 +3167,14 @@
           if (playPromise && typeof playPromise.catch === 'function') {
             playPromise.catch(function() {});
           }
+          requestAnimationFrame(updateNavPosition);
         } else {
           video.pause();
           video.hidden = true;
           image.hidden = false;
           image.setAttribute('src', src);
           image.setAttribute('alt', alt);
+          requestAnimationFrame(updateNavPosition);
         }
       }
 
@@ -3095,6 +3184,7 @@
         setTimeout(function() {
           showCard(index);
           mediaFrame.classList.remove('is-swapping');
+          updateNavPosition();
         }, 240);
       }
 
@@ -3105,17 +3195,38 @@
           scheduleNext();
         }, rotationDelay);
       }
-
-      stage.addEventListener('mouseenter', function() {
-        clearTimeout(timerId);
-      });
-      stage.addEventListener('mouseleave', function() {
-        scheduleNext();
-      });
       stage.addEventListener('focusin', function() {
         clearTimeout(timerId);
+        requestAnimationFrame(updateNavPosition);
       });
       stage.addEventListener('focusout', function() {
+        scheduleNext();
+        requestAnimationFrame(updateNavPosition);
+      });
+
+      card.addEventListener('mouseenter', function() {
+        requestAnimationFrame(updateNavPosition);
+      });
+
+      card.addEventListener('mouseleave', function() {
+        requestAnimationFrame(updateNavPosition);
+      });
+
+      image.addEventListener('load', updateNavPosition);
+      video.addEventListener('loadedmetadata', updateNavPosition);
+      window.addEventListener('resize', updateNavPosition);
+
+      prevBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        transitionTo(currentIndex - 1);
+        scheduleNext();
+      });
+
+      nextBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        transitionTo(currentIndex + 1);
         scheduleNext();
       });
 
@@ -3125,6 +3236,7 @@
           e.preventDefault();
           card.classList.add('mobile-overlay-active');
           clearTimeout(timerId);
+          requestAnimationFrame(updateNavPosition);
           return;
         }
       });
@@ -3138,6 +3250,7 @@
       });
 
       showCard(0);
+      updateNavPosition();
       scheduleNext();
     })();
 
