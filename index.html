@@ -321,6 +321,9 @@
       align-items: center;
       width: 100%;
     }
+    .hero-content {
+      min-width: 0;
+    }
     .hero-name { font-weight: 700; margin-bottom: var(--space-md); text-shadow: 0 0 40px rgba(0, 229, 160, 0.1); }
     .hero-name .accent { color: var(--accent); }
     .hero-tagline {
@@ -336,11 +339,13 @@
     }
     .cursor {
       display: inline-block;
-      width: 2px;
-      height: 1.1em;
-      background: var(--accent);
+      width: auto;
+      height: auto;
+      background: none;
       margin-left: 2px;
-      vertical-align: text-bottom;
+      vertical-align: baseline;
+      color: var(--accent);
+      font-family: var(--font-mono);
       opacity: 0;
       animation: blink 1s step-end 2.5s infinite;
       animation-fill-mode: forwards;
@@ -458,6 +463,139 @@
     }
     .headshot .bracket-tr { top: 12px; right: 12px; border-width: 2px 2px 0 0; }
     .headshot .bracket-bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; }
+
+    /* === Hero Showcase === */
+    .hero-showcase {
+      width: 100%;
+      margin-top: var(--space-lg);
+      min-width: 0;
+    }
+    .showcase-stage {
+      position: relative;
+      width: 100%;
+      max-width: 620px;
+      margin-left: 0;
+      overflow: visible;
+    }
+    .showcase-card {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      overflow: visible;
+      isolation: isolate;
+    }
+    .showcase-media-frame {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      opacity: 1;
+      transition: opacity 0.45s ease-in-out;
+    }
+    .showcase-media-frame.is-swapping {
+      opacity: 0.55;
+    }
+    .showcase-card img,
+    .showcase-card video {
+      width: auto;
+      height: auto;
+      max-width: min(100%, 620px);
+      max-height: 500px;
+      object-fit: contain;
+      background: rgba(10, 10, 18, 0.92);
+      transition: transform 0.45s ease, filter 0.45s ease;
+      display: block;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+    }
+    .showcase-card img[hidden],
+    .showcase-card video[hidden] {
+      display: none;
+    }
+    .showcase-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      background: linear-gradient(180deg, transparent 42%, rgba(10, 10, 18, 0.94) 100%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+    .showcase-overlay {
+      position: absolute;
+      left: var(--space-md);
+      right: var(--space-md);
+      bottom: var(--space-md);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      z-index: 1;
+    }
+    .showcase-copy {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .showcase-title {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      line-height: 1.3;
+      color: var(--text);
+    }
+    .showcase-desc {
+      font-size: 0.78rem;
+      line-height: 1.35;
+      color: var(--muted);
+    }
+    .showcase-arrow {
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      flex-shrink: 0;
+      transform: translateX(-0.15rem);
+      transition: transform 0.2s ease;
+    }
+    .showcase-card:hover::after,
+    .showcase-card:focus-visible::after {
+      opacity: 1;
+    }
+    .showcase-card:hover .showcase-overlay,
+    .showcase-card:focus-visible .showcase-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .showcase-card:hover img,
+    .showcase-card:hover video,
+    .showcase-card:focus-visible img {
+      transform: scale(1.02);
+      filter: brightness(0.9);
+    }
+    .showcase-card:focus-visible video {
+      transform: scale(1.02);
+      filter: brightness(0.9);
+    }
+    .showcase-card:hover .showcase-arrow,
+    .showcase-card:focus-visible .showcase-arrow {
+      transform: translateX(0);
+    }
+    .showcase-items {
+      display: none;
+    }
+    @media (max-width: 767px) {
+      .showcase-stage {
+        max-width: 440px;
+      }
+      .showcase-card img,
+      .showcase-card video {
+        max-height: 360px;
+      }
+    }
 
     /* === Section Dividers === */
     #about, #experience, #projects, #skills, #education, #extracurricular {
@@ -1417,7 +1555,10 @@
     /* === Responsive: Tablet (768px+) === */
     @media (min-width: 768px) {
       .nav-links { display: flex; }
-      .hero-grid { grid-template-columns: 1fr 1fr; }
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+      }
       /* .headshot-container { display: flex; } — uncomment when assets/headshot.jpg is added */
       .timeline-item { grid-template-columns: 140px 1fr; }
       .project-grid { grid-template-columns: 1fr; }
@@ -1876,7 +2017,7 @@
         <div class="hero-grid">
           <div class="hero-content">
             <h1 class="hero-name">Scott <span class="accent">Cann</span></h1>
-            <p class="hero-tagline">robotics engineering · controls · automation<span class="cursor" aria-hidden="true"></span></p>
+            <p class="hero-tagline">robotics engineer · controls · mechatronics<span class="cursor" aria-hidden="true">|</span></p>
             <div class="hero-links">
               <a href="https://github.com/scottcan-glitch" class="btn btn-icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -1890,14 +2031,34 @@
               <span class="status-item"><span class="status-dot" aria-hidden="true"></span> Open to full-time engineering roles</span>
               <span class="status-item">🎓 MSE Apr 2026</span>
             </div>
-          </div>
-          <div class="headshot-container">
-            <div class="headshot">
-              <span class="bracket-tr" aria-hidden="true"></span>
-              <span class="bracket-bl" aria-hidden="true"></span>
-              <span class="headshot-placeholder">Your Photo</span>
-              <!-- Replace the placeholder span above with: -->
-              <!-- <img src="assets/headshot.jpg" alt="Scott Cann" /> -->
+            <div class="hero-showcase" aria-label="Featured project gallery">
+              <div class="showcase-stage" data-showcase-rotator>
+                <a class="showcase-card" id="showcaseCard" href="#proj-5dof-arm">
+                  <span class="showcase-media-frame" id="showcaseMediaFrame">
+                    <img id="showcaseImage" src="assets/projects/robot-combo1.jpg" alt="5DOF robot arm project overview" hidden>
+                    <video id="showcaseVideo" autoplay muted loop playsinline>
+                      <source id="showcaseVideoSource" src="assets/projects/Snapchat-1005023295.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </span>
+                  <span class="showcase-overlay">
+                    <span class="showcase-copy">
+                      <span class="showcase-title" id="showcaseTitle">5DOF Stepper Robot Arm</span>
+                      <span class="showcase-desc" id="showcaseDesc">Open-loop stepper control, fabrication, and inverse kinematics.</span>
+                    </span>
+                    <span class="showcase-arrow" aria-hidden="true">↗</span>
+                  </span>
+                </a>
+                <div class="showcase-items" hidden>
+                  <div class="showcase-item" data-type="video" data-href="#proj-5dof-arm" data-src="assets/projects/Snapchat-1005023295.mp4" data-title="5DOF Stepper Robot Arm" data-desc="Open-loop stepper control, fabrication, and inverse kinematics."></div>
+                  <div class="showcase-item" data-type="image" data-href="#proj-5dof-arm" data-src="assets/projects/robot-combo1.jpg" data-alt="5DOF robot arm project overview" data-title="5DOF Robot Arm" data-desc="Stepper-driven arm design, fabrication, and kinematics."></div>
+                  <div class="showcase-item" data-type="image" data-href="#proj-mpc-traction" data-src="assets/projects/nmpc-model-img.jpg" data-alt="NMPC traction control vehicle model" data-title="Traction Control using Nonlinear MPC" data-desc="Vehicle traction and yaw stability control."></div>
+                  <div class="showcase-item" data-type="image" data-href="#proj-sepic-converter" data-src="assets/projects/sepic-combo.jpg" data-alt="SEPIC converter Simulink model and control design" data-title="SEPIC Converter" data-desc="Power electronics modeling and controller design."></div>
+                  <div class="showcase-item" data-type="image" data-href="#proj-voron" data-src="assets/projects/voron-scott.jpg" data-alt="Scott with completed Voron 2.4 printer" data-title="FDM 3D Printer (Voron 2.4)" data-desc="Printer build, tuning, and custom macros."></div>
+                  <div class="showcase-item" data-type="image" data-href="#proj-esp32-firmware" data-src="assets/esp32.jpg" data-alt="ESP32 speed controller and sensor fusion firmware" data-title="Speed Controller &amp; Sensor Fusion Firmware" data-desc="ESP32 firmware with PI control and IMU fusion."></div>
+                  <div class="showcase-item" data-type="image" data-href="#proj-self-balancing" data-src="assets/projects/balancing-robot-combo.jpg" data-alt="Self-balancing robot free body diagrams, CAD model, and Simulink controller" data-title="Self-Balancing Robot" data-desc="LQR and Kalman filter control design."></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2823,6 +2984,93 @@
     // Hide semester/year labels with no visible cards on page load
     // (handles edition-gated cards hidden by CSS on the live site)
     hideEmptyChronoGroups();
+
+    // === Hero Showcase Rotator ===
+    (function() {
+      var stage = document.querySelector('[data-showcase-rotator]');
+      if (!stage) return;
+
+      var items = Array.prototype.slice.call(stage.querySelectorAll('.showcase-item'));
+      var card = document.getElementById('showcaseCard');
+      var mediaFrame = document.getElementById('showcaseMediaFrame');
+      var image = document.getElementById('showcaseImage');
+      var video = document.getElementById('showcaseVideo');
+      var videoSource = document.getElementById('showcaseVideoSource');
+      var title = document.getElementById('showcaseTitle');
+      var desc = document.getElementById('showcaseDesc');
+      if (!card || !mediaFrame || !image || !video || !videoSource || !title || !desc || items.length <= 1) return;
+
+      var currentIndex = 0;
+      var timerId = null;
+      var rotationDelay = 3200;
+
+      function showCard(index) {
+        currentIndex = (index + items.length) % items.length;
+
+        var item = items[currentIndex];
+        var type = item.getAttribute('data-type') || 'image';
+        var src = item.getAttribute('data-src') || '';
+        var href = item.getAttribute('data-href') || '#projects';
+        var alt = item.getAttribute('data-alt') || '';
+        var itemTitle = item.getAttribute('data-title') || '';
+        var itemDesc = item.getAttribute('data-desc') || '';
+
+        card.setAttribute('href', href);
+        title.textContent = itemTitle;
+        desc.textContent = itemDesc;
+
+        if (type === 'video') {
+          image.hidden = true;
+          video.hidden = false;
+          if (videoSource.getAttribute('src') !== src) {
+            videoSource.setAttribute('src', src);
+            video.load();
+          }
+          var playPromise = video.play();
+          if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(function() {});
+          }
+        } else {
+          video.pause();
+          video.hidden = true;
+          image.hidden = false;
+          image.setAttribute('src', src);
+          image.setAttribute('alt', alt);
+        }
+      }
+
+      function transitionTo(index) {
+        mediaFrame.classList.add('is-swapping');
+        setTimeout(function() {
+          showCard(index);
+          mediaFrame.classList.remove('is-swapping');
+        }, 180);
+      }
+
+      function scheduleNext() {
+        clearTimeout(timerId);
+        timerId = setTimeout(function() {
+          transitionTo(currentIndex + 1);
+          scheduleNext();
+        }, rotationDelay);
+      }
+
+      stage.addEventListener('mouseenter', function() {
+        clearTimeout(timerId);
+      });
+      stage.addEventListener('mouseleave', function() {
+        scheduleNext();
+      });
+      stage.addEventListener('focusin', function() {
+        clearTimeout(timerId);
+      });
+      stage.addEventListener('focusout', function() {
+        scheduleNext();
+      });
+
+      showCard(0);
+      scheduleNext();
+    })();
 
     // === Chrono Details Navigation ===
     var chronoTrack = document.querySelector('.chrono-track');
