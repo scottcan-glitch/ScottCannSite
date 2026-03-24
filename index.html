@@ -1363,6 +1363,16 @@
     }
     .about-content p { margin-bottom: var(--space-md); }
     .about-content p:last-child { margin-bottom: 0; }
+    .about-content a {
+      color: var(--text);
+      border-bottom: 1px solid rgba(0, 150, 255, 0.45);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .about-content a:hover,
+    .about-content a:focus-visible {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
 
     /* === CTA Buttons on Cards === */
     .project-ctas {
@@ -2169,9 +2179,9 @@
           <div class="line" aria-hidden="true"></div>
         </div>
         <div class="about-content">
-          <p>I am a recent graduate specializing in control systems, automation, and mechatronics. My journey started with building and modifying FDM 3D printers, pick and place robots, and learning to program while studying mechanical engineering. This foundation led me to a test engineering role at Link Engineering, where I conducted fatigue and ultimate strength tests on automotive components in a servo-hydraulic lab. Our group designed and built custom fixtures and electronics, and worked directly with customers to expand testing capabilities.</p>
-          <p>During my MS in Robotics Engineering at UM-Dearborn I focused on optimal control theory, system integration and automation. Heavy MATLAB/Simulink workflows for modeling and controlling mechatronic systems, typically automotive. In my work at the Digital Manufacturing Lab at University of Michigan - Dearborn, I spearheaded system integration for a metal binder jet 3D printer (sensors, actuators, and power systems), and developed a metal powder delivery system from the ground up. Next I developed end-to-end motion control software to automate print operations start to finish - from slicing parts and loading 2D image data to the inkjet, to inline data acquisition and logging.</p>
-          <p>I like using hardware and software knowledge to solve complex problems and improve systems. With a strong foundation in MATLAB/Simulink, Python, and C, combined with hands-on experience in welding, fabrication, and mechanical testing, I bridge the gap between theory and implementation. In May 2026 I will graduate from UM-Dearborn, and hope to find a creative team to work with! See some cool projects below.</p>
+          <p>I am a recent graduate specializing in <a href="#proj-mpc-traction">control systems</a>, <a href="#exp-digital-mfg-lab">automation</a>, and <a href="#proj-5dof-arm">mechatronics</a>. My journey started with building and modifying <a href="#proj-voron">FDM 3D printers</a>, pick and place robots, and learning to program while studying mechanical engineering. This foundation led me to a <a href="#exp-link-engineering">test engineering role at Link Engineering</a>, where I conducted fatigue and ultimate strength tests on automotive components in a servo-hydraulic lab. Our group designed and built custom fixtures and electronics, and worked directly with customers to expand testing capabilities.</p>
+          <p>During my MS in Robotics Engineering at UM-Dearborn I focused on <a href="#proj-mpc-traction">optimal control theory</a>, system integration and automation. Heavy <a href="#projects">MATLAB/Simulink workflows</a> for modeling and controlling mechatronic systems, typically automotive. In my work at the <a href="#exp-digital-mfg-lab">Digital Manufacturing Lab</a> at University of Michigan - Dearborn, I spearheaded system integration for a metal binder jet 3D printer (sensors, actuators, and power systems), and developed a metal powder delivery system from the ground up. Next I developed end-to-end <a href="#exp-digital-mfg-lab">motion control software</a> to automate print operations start to finish - from slicing parts and loading 2D image data to the inkjet, to inline data acquisition and logging.</p>
+          <p>I like using hardware and software knowledge to solve complex problems and improve systems. With a strong foundation in <a href="#exp-digital-mfg-lab">MATLAB/Simulink, Python, and C</a>, combined with hands-on experience in <a href="#exp-link-engineering">welding, fabrication, and mechanical testing</a>, I bridge the gap between theory and implementation. In May 2026 I will graduate from UM-Dearborn, and hope to find a creative team to work with! See some cool <a href="#projects">projects below</a>.</p>
         </div>
       </div>
     </section>
